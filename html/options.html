@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperBlocker Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .blocked-list {
+            margin: 20px 0;
+        }
+        .blocked-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .blocked-item button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .blocked-item button:hover {
+            background: #c82333;
+        }
+        .add-form {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .add-form input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .add-form button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .add-form button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>SuperBlocker Settings</h1>
+    <p>Add or remove websites to block:</p>
+
+    <div class="add-form">
+        <input type="text" id="newSite" placeholder="e.g., youtube.com" />
+        <button id="addBtn">Add Site</button>
+    </div>
+
+    <div class="blocked-list" id="blockedList">
+        <!-- Blocked sites will be listed here -->
+    </div>
+
+    <script src="../src/options.js"></script>
+</body>
+</html>
