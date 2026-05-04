@@ -1,0 +1,29 @@
+{
+  "name": "blocksite",
+  "version": "1.0.0",
+  "description": "- [Overview](#overview) - [Purpose](#purpose) - [Features](#features) - [Installation Guide](#installation-guide) - [How to Use SuperBlocker in Chrome](#how-to-use-superblocker-in-chrome) - [Configuration and Management](#configuration-and-management) - [Frequently Asked Questions](#frequently-asked-questions) - [Technical Details](#technical-details) - [Privacy and Security](#privacy-and-security)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "node scripts/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumit-sinha-playground/blocksite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sumit-sinha-playground/blocksite/issues"
+  },
+  "homepage": "https://github.com/sumit-sinha-playground/blocksite#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.3",
+    "babel-jest": "^30.3.0",
+    "esbuild": "^0.28.0",
+    "html-minifier-terser": "^7.2.0",
+    "jest": "^30.3.0"
+  }
+}

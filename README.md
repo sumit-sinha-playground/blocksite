@@ -219,22 +219,29 @@ A: No. SuperBlocker operates entirely locally and doesn't send any data to exter
 **Q: Can I block subdomains specifically?**
 A: SuperBlocker automatically blocks all subdomains when you add a domain. For example, adding "youtube.com" also blocks "music.youtube.com" and "studio.youtube.com".
 
-## Technical Details
+## Running Tests
 
-SuperBlocker is built using:
-- **Manifest V3**: Chrome's modern extension framework
-- **declarativeNetRequest API**: Efficient, performant network request blocking
-- **Chrome Storage API**: Secure, cloud-synced data persistence
-- **Service Workers**: Lightweight background processing
+To run the unit tests for the extension, use the following command:
 
-This modern architecture ensures SuperBlocker runs efficiently without noticeably impacting browser performance.
+```
+npm test
+```
 
-## Privacy and Security
+Ensure that you have Jest installed and configured properly.
 
-Your privacy is paramount:
-- **No data collection**: SuperBlocker doesn't collect or transmit any personal browsing data
-- **No external connections**: All blocking happens locally in your browser
-- **Transparent operation**: You can see exactly which sites are blocked at any time
-- **Cloud sync**: When enabled, only your block list is synced via Chrome's encrypted sync service
+## Building the Extension
 
-SuperBlocker is designed to be a tool that works for you, not against you, with complete transparency and privacy protection.
+To create a build of the Chrome extension, run the following command:
+
+```
+npm run build
+```
+
+This will create a `build` folder containing all the necessary files for the Chrome extension.
+
+## Installing the Extension in Chrome
+
+1. Open Chrome and navigate to `chrome://extensions/`.
+2. Enable "Developer mode" using the toggle in the top-right corner.
+3. Click on "Load unpacked" and select the `build` folder created in the previous step.
+4. The extension will now be installed and ready to use.
