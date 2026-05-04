@@ -35,26 +35,26 @@ The extension comes pre-configured to block YouTube and its shortlink variant (y
 
 ## Features
 
-- **Simple Block List Management**: Add or remove websites from your block list through an intuitive options page.
-- **Pre-configured Defaults**: Comes with YouTube already in the block list, but fully customizable.
-- **Warning Page**: When you attempt to access a blocked site, a warning page appears instead of the content.
-- **Efficient Performance**: Uses Chrome's declarativeNetRequest API for minimal performance impact.
-- **Privacy-Focused**: All blocking happens locally; no data is sent to external servers.
-- **Easy On/Off**: Quickly manage your blocked sites without complex settings.
+- **Smart Popup Menu**: Quickly block or unblock the current website directly from the extension icon.
+- **Popular Sites Shortcuts**: One-click blocking for common distractions like YouTube, Instagram, Facebook, and X (Twitter), always visible in the popup.
+- **Simple Block List Management**: Add or remove websites through an intuitive options page or the popup menu.
+- **Domain-Level Blocking**: Intelligent filtering (`||domain^`) that blocks both the bare domain and all subdomains (e.g., blocking `example.com` also blocks `www.example.com`).
+- **Pre-configured Defaults**: Comes with YouTube already in the block list.
+- **Warning Page**: A deterrent page appears when you attempt to access a blocked site.
+- **Optimized Performance**: Bundled and minified using `esbuild` for maximum speed and minimal memory footprint.
+- **Privacy-Focused**: Operates entirely locally; your data never leaves your device.
 
 ## Installation Guide
 
-### Step 1: Prepare the Extension
+### Step 1: Build the Extension
 
-First, ensure you have all the extension files in a folder on your computer:
-- `manifest.json`
-- `README.md`
-- `rules.json`
-- `html/options.html`
-- `html/warning.html`
-- `src/background.js`
-- `src/options.js`
-- `icons/` (containing icon files)
+Before installing, you must generate the optimized build:
+
+1. Open your terminal in the project root.
+2. Run `npm install` to install dependencies.
+3. Run `npm run build` to create the optimized `build/` directory.
+
+The `build/` folder will contain the processed HTML, minified CSS, and bundled JavaScript required by Chrome.
 
 ### Step 2: Open Chrome Extensions Page
 
@@ -69,10 +69,10 @@ In the Extensions page, you'll see a toggle switch labeled "Developer mode" in t
 
 ### Step 4: Load the Extension
 
-1. Click the "Load unpacked" button
-2. Navigate to the folder where you have the SuperBlocker extension files
-3. Select the folder and click "Open" (or "Select Folder" depending on your OS)
-4. The SuperBlocker extension should now appear in your extensions list with a blue icon
+1. Click the "Load unpacked" button.
+2. Navigate to the project directory and select the **`build`** folder.
+3. Click "Open" (or "Select Folder").
+4. The SuperBlocker extension should now appear in your extensions list.
 
 ### Step 5: Verify Installation
 
@@ -87,25 +87,24 @@ Congratulations! SuperBlocker is now installed and ready to use.
 
 ## How to Use SuperBlocker in Chrome
 
+### Accessing the Popup Menu (Recommended)
+
+The easiest way to manage your sites is through the Popup Menu:
+
+1. Click the **Extensions** icon (puzzle piece) in the top-right of Chrome.
+2. Find **SuperBlocker** and click its icon.
+3. You will see:
+   - The **Current Website** at the top.
+   - **Popular Sites** (YouTube, Facebook, etc.) below it.
+   - Any other **Blocked Sites**.
+4. Simply **check or uncheck** the boxes to toggle blocking for those sites immediately.
+
 ### Accessing the Options Page
 
-To manage your blocked websites list, you need to access the SuperBlocker options page:
+For a full view of all blocked sites:
 
-1. **Via Extensions Menu**:
-   - Click the puzzle icon (Extensions) in the top-right corner of Chrome
-   - Find "SuperBlocker" in the list
-   - Click on the extension name
-   - Select "Options" from the menu
-
-2. **Via Extensions Page**:
-   - Open `chrome://extensions/`
-   - Find SuperBlocker in the list
-   - Click "Details"
-   - Scroll down and click "Extension options"
-
-3. **Direct URL**:
-   - In Chrome's address bar, type `chrome-extension://[EXTENSION_ID]/html/options.html`
-   - Replace [EXTENSION_ID] with SuperBlocker's actual ID (visible in the extensions list)
+1. Right-click the SuperBlocker icon and select **Options**.
+2. Or go to `chrome://extensions/`, find SuperBlocker, click **Details**, and select **Extension options**.
 
 ### Adding Websites to Your Block List
 
@@ -120,7 +119,7 @@ Once you're on the options page:
    - `instagram.com`
    - `tiktok.com`
 
-3. **Important**: Enter only the domain without the protocol (http://, https://) or www prefix. SuperBlocker will automatically block all subdomains and protocol variations.
+3. **Domain Entry**: Enter only the domain name without `http://` or `www`. For example, entering `youtube.com` will automatically block `www.youtube.com`, `music.youtube.com`, etc., using the extension's intelligent `||domain^` filtering.
 
 4. **Click Add**: Press the "Add" button or hit Enter to add the site to your block list.
 
@@ -229,19 +228,20 @@ npm test
 
 Ensure that you have Jest installed and configured properly.
 
-## Building the Extension
+## Development and Building
 
-To create a build of the Chrome extension, run the following command:
+To build the extension for production:
 
-```
+```bash
 npm run build
 ```
 
-This will create a `build` folder containing all the necessary files for the Chrome extension.
+This creates a `build/` folder with bundled JS, minified CSS, and optimized HTML.
 
-## Installing the Extension in Chrome
+## Installing in Chrome
 
-1. Open Chrome and navigate to `chrome://extensions/`.
-2. Enable "Developer mode" using the toggle in the top-right corner.
-3. Click on "Load unpacked" and select the `build` folder created in the previous step.
-4. The extension will now be installed and ready to use.
+1. Build the extension using the command above.
+2. Open Chrome and navigate to `chrome://extensions/`.
+3. Enable **Developer mode** (top-right).
+4. Click **Load unpacked** and select the **`build`** folder from this project.
+5. The extension is now ready to use!
